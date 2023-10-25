@@ -1,0 +1,61 @@
+version: "3.3"
+networks:
+  lnnet:
+
+services:
+  bitcoind:
+    container_name: bitcoind-proyecto-prueba
+    # build:
+    #     context: bitcoind
+    image: carlosalvaradodock/bitcoind-proyecto
+    networks:
+      - lnnet
+    expose:
+      - "18443"
+      - "12005"
+      - "12006"
+    restart: always
+  
+  Alice:
+    container_name: Alice
+    build:
+        context: lnd
+    image: lnbook/lnd:latest
+    networks:
+      - lnnet
+    expose:
+      - "9735"
+    restart: always
+
+  Bob:
+    container_name: Bob
+    build:
+        context: lnd
+    image: lnbook/lnd:latest
+    networks:
+      - lnnet
+    expose:
+      - "9735"
+    restart: always
+
+  Chan:
+    container_name: Chan
+    build:
+        context: lnd
+    image: lnbook/lnd:latest
+    networks:
+      - lnnet
+    expose:
+      - "9735"
+    restart: always
+
+  Dina:
+    container_name: Dina
+    build:
+        context: lnd
+    image: lnbook/lnd:latest
+    networks:
+      - lnnet
+    expose:
+      - "9735"
+    restart: always
